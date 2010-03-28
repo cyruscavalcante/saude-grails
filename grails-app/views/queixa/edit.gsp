@@ -1,5 +1,3 @@
-
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -32,7 +30,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="tipo"><g:message code="queixa.tipo.label" default="Tipo" /></label>
+                                  <label for="tipo"><g:message code="queixa.tipo.label" default="Tipo de queixa" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: queixaInstance, field: 'tipo', 'errors')}">
                                     <g:select name="tipo" from="${queixaInstance.constraints.tipo.inList}" value="${queixaInstance?.tipo}" valueMessagePrefix="queixa.tipo"  />
@@ -41,7 +39,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="nome_cidadao"><g:message code="queixa.nome_cidadao.label" default="Nomecidadao" /></label>
+                                  <label for="nome_cidadao"><g:message code="queixa.nome_cidadao.label" default="Nome do cidadão responsável" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: queixaInstance, field: 'nome_cidadao', 'errors')}">
                                     <g:textField name="nome_cidadao" maxlength="100" value="${queixaInstance?.nome_cidadao}" />
@@ -50,7 +48,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="data_queixa"><g:message code="queixa.data_queixa.label" default="Dataqueixa" /></label>
+                                  <label for="data_queixa"><g:message code="queixa.data_queixa.label" default="Data da queixa" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: queixaInstance, field: 'data_queixa', 'errors')}">
                                     <g:datePicker name="data_queixa" precision="day" value="${queixaInstance?.data_queixa}"  />
@@ -59,7 +57,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="status"><g:message code="queixa.status.label" default="Status" /></label>
+                                  <label for="status"><g:message code="queixa.status.label" default="Status da  queixa" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: queixaInstance, field: 'status', 'errors')}">
                                     <g:select name="status" from="${queixaInstance.constraints.status.inList}" value="${fieldValue(bean: queixaInstance, field: 'status')}" valueMessagePrefix="queixa.status"  />
