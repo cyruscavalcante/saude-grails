@@ -46,7 +46,7 @@
                         
                             <td><g:formatDate format="dd/MM/yyyy" date="${queixaInstance.data_queixa}" /></td>
                         
-                            <td>${fieldValue(bean: queixaInstance, field: "status")}</td>
+                            <td>${fieldValue(bean: queixaInstance, field: "status") ? "Aberto" : "Fechado"}</td>
                         
                             <td>${fieldValue(bean: queixaInstance, field: "queixa")}</td>
                         

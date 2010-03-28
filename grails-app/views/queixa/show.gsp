@@ -28,30 +28,30 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="queixa.tipo.label" default="Tipo" /></td>
+                            <td valign="top" class="name"><g:message code="queixa.tipo.label" default="Tipo de queixa" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: queixaInstance, field: "tipo")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="queixa.nome_cidadao.label" default="Nomecidadao" /></td>
+                            <td valign="top" class="name"><g:message code="queixa.nome_cidadao.label" default="Cidadão responsável" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: queixaInstance, field: "nome_cidadao")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="queixa.data_queixa.label" default="Dataqueixa" /></td>
+                            <td valign="top" class="name"><g:message code="queixa.data_queixa.label" default="Data da queixa" /></td>
                             
-                            <td valign="top" class="value"><g:formatDate date="${queixaInstance?.data_queixa}" /></td>
+                            <td valign="top" class="value"><g:formatDate format="dd/MM/yyyy" date="${queixaInstance?.data_queixa}" /></td>
                             
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="queixa.status.label" default="Status" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: queixaInstance, field: "status")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: queixaInstance, field: "status") ? "Aberto" : "Fechado"}</td>
                             
                         </tr>
                     
