@@ -12,4 +12,10 @@ class Queixa {
 		status(inList:[true, false])
 		queixa(blank:false, maxSize:1000)
 	}
+	
+	static def reportable = [
+		title: 'Queixas de Saúde',
+		filename: 'relatório de queixas'
+	]
+	
 }
