@@ -28,29 +28,29 @@
                         
                             <g:sortableColumn property="data_queixa" title="${message(code: 'queixa.data_queixa.label', default: 'Data')}" />
                         
-                            <g:sortableColumn property="status" title="${message(code: 'queixa.status.label', default: 'Status')}" />
-                        
                             <g:sortableColumn property="queixa" title="${message(code: 'queixa.queixa.label', default: 'Queixa')}" />
+							<th></th>
                         
                         </tr>
                     </thead>
                     <tbody>
                     <g:each in="${queixaInstanceList}" status="i" var="queixaInstance">
-                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+						<g:if test="${queixaInstance.status}">
+                        	<tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${queixaInstance.id}">${fieldValue(bean: queixaInstance, field: "id")}</g:link></td>
+                            	<td><g:link action="show" id="${queixaInstance.id}">${fieldValue(bean: queixaInstance, field: "id")}</g:link></td>
                         
-                            <td>${fieldValue(bean: queixaInstance, field: "tipo")}</td>
+                            	<td>${fieldValue(bean: queixaInstance, field: "tipo")}</td>
                         
-                            <td>${fieldValue(bean: queixaInstance, field: "nome_cidadao")}</td>
+                            	<td>${fieldValue(bean: queixaInstance, field: "nome_cidadao")}</td>
                         
-                            <td><g:formatDate format="dd/MM/yyyy" date="${queixaInstance.data_queixa}" /></td>
+                            	<td><g:formatDate format="dd/MM/yyyy" date="${queixaInstance.data_queixa}" /></td>
                         
-                            <td>${fieldValue(bean: queixaInstance, field: "status") ? "Aberto" : "Fechado"}</td>
+                            	<td>${fieldValue(bean: queixaInstance, field: "queixa")}</td>
+								<td><g:link action="fechar_queixa" id="${queixaInstance.id}">Fechar queixa</g:link></td>
                         
-                            <td>${fieldValue(bean: queixaInstance, field: "queixa")}</td>
-                        
-                        </tr>
+                        	</tr>
+						</g:if>
                     </g:each>
                     </tbody>
                 </table>

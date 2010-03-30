@@ -17,6 +17,19 @@ class QueixaController {
         return [queixaInstance: queixaInstance]
     }
 
+	def	fechar_queixa = {
+		def queixaInstance = Queixa.get(params.id)
+		if (!queixaInstance) {
+			flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'queixa.label', default: 'Queixa'), params.id])}"
+			redirect(action: "list")
+		}
+		else {
+			Queixa.executeUpdate("update Queixa q set q.status=false where q.id='${params.id}'")
+			flash.message = "${message(code: 'default.updated.message', args: [message(code: 'queixa.label', default: 'Queixa'), params.id])}"
+			redirect(action: "list")
+		}
+	}
+
     def save = {
         def queixaInstance = new Queixa(params)
         if (queixaInstance.save(flush: true)) {
