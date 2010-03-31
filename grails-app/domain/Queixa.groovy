@@ -16,6 +16,7 @@ class Queixa {
 	}
 	
 	static def reportable = [
+		columns: ['id', 'tipo', 'nome_cidadao', 'data_queixa', 'queixa', 'status', 'justificativa']
 		title: 'Queixas de Saúde',
 		filename: 'relatório de queixas'
 	]

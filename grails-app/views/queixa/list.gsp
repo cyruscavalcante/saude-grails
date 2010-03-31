@@ -8,6 +8,8 @@
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${createLink(uri: '/')}">Home</a></span>
+			<span class="menuButton"><a class="list" href="http://localhost:8080/saude/djReport/?entity=Queixa&reportColumns=id,tipo,nome_cidadao,data_queixa,queixa,status,justificativa">Relatório por data</a></span>
+			<span class="menuButton"><a class="list" href="http://localhost:8080/saude/djReport/?entity=Queixa&reportColumns=id,tipo,nome_cidadao,data_queixa,queixa,status,justificativa">Relatório por tipo</a></span>
             <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
         </div>
         <div class="body">
