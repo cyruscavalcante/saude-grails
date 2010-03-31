@@ -4,6 +4,7 @@ class Queixa {
 	Date data_queixa
 	String queixa
 	Boolean status
+	String justificativa
 	
 	static constraints = {
 		tipo(inList:["Alimentar", "Animal"])
@@ -11,6 +12,7 @@ class Queixa {
 		data_queixa(max:new Date(), nullable:false)
 		status(inList:[true, false])
 		queixa(blank:false, maxSize:1000)
+		justificativa(nullable:true)
 	}
 	
 	static def reportable = [

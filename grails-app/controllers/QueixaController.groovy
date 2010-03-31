@@ -17,17 +17,40 @@ class QueixaController {
         return [queixaInstance: queixaInstance]
     }
 
-	def	fechar_queixa = {
+	def fechar = {
 		def queixaInstance = Queixa.get(params.id)
 		if (!queixaInstance) {
-			flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'queixa.label', default: 'Queixa'), params.id])}"
+			flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'queixa.label', default:'Queixa'), params.id])}"
 			redirect(action: "list")
 		}
 		else {
-			Queixa.executeUpdate("update Queixa q set q.status=false where q.id='${params.id}'")
-			flash.message = "${message(code: 'default.updated.message', args: [message(code: 'queixa.label', default: 'Queixa'), params.id])}"
-			redirect(action: "list")
+			return [queixaInstance: queixaInstance]
 		}
+	}
+
+
+	def	fechar_queixa = {
+		def queixaInstance = Queixa.get(params.id)
+		if (queixaInstance) {
+			if (params.version) {
+				def version = params.version.toLong()
+				if (queixaInstance.version > version) {
+					queixaInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'queixa.label', default: 'Queixa')] as Object[], "Outro usuário atualizou esta Queixa enquanto você editava")
+					render(view:"fechar", model:[queixaInstance: queixaInstance])
+					return
+				}
+			}
+			queixaInstance.properties = params
+			if (!queixaInstance.hasErrors() && queixaInstance.save(flush: true)) {
+				Queixa.executeUpdate("update Queixa q set q.status=false where q.id='${params.id}'")
+				flash.message = "${message(code: 'default.closed.message', args: [message(code: 'queixa.label', default: 'Queixa'), queixaInstance.id])}"
+				redirect(action: "list")
+			}
+		}
+		else {
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'queixa.label', default: 'Queixa'), params.id])}"
+            redirect(action: "show")
+        }
 	}
 
     def save = {

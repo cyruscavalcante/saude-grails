@@ -47,7 +47,7 @@
                             	<td><g:formatDate format="dd/MM/yyyy" date="${queixaInstance.data_queixa}" /></td>
                         
                             	<td>${fieldValue(bean: queixaInstance, field: "queixa")}</td>
-								<td><g:link action="fechar_queixa" id="${queixaInstance.id}">Fechar queixa</g:link></td>
+								<td><g:link action="fechar" id="${queixaInstance.id}">Fechar queixa</g:link></td>
                         
                         	</tr>
 						</g:if>
